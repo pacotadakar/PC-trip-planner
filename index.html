@@ -10,9 +10,8 @@
 
 <!-- SheetJS for Excel export -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<!-- Leaflet for maps -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Google Maps + Places -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAC8wK5w0DaEYG4ur22EY4_M9E6jhopLI&libraries=places&language=es"></script>
 
 <style>
 :root {
@@ -409,9 +408,22 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 
     <!-- MAP -->
     <div id="view-map" class="view">
-      <div id="map-container">
-        <div id="map"></div>
+      <div id="map-container" style="position:relative;height:100%;display:flex;flex-direction:column">
+        <!-- Search bar -->
+        <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:999;width:90%;max-width:400px">
+          <div style="display:flex;gap:6px">
+            <input id="map-search-input" type="text" placeholder="🔍 Buscar lugar..."
+              style="flex:1;background:rgba(15,25,35,.95);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:9px 14px;color:#F0F4F8;font-size:.82rem;outline:none">
+            <button onclick="doMapSearch()" style="background:#3B9EF5;border:none;border-radius:10px;color:#fff;padding:9px 14px;cursor:pointer;font-size:.85rem">→</button>
+          </div>
+        </div>
+        <div id="map" style="flex:1"></div>
         <div class="map-day-picker" id="map-day-picker"></div>
+        <!-- Places panel -->
+        <div id="places-panel" style="position:absolute;bottom:60px;left:0;right:0;background:#162030;border-top:1px solid rgba(255,255,255,.1);border-radius:16px 16px 0 0;padding:16px;max-height:55%;overflow-y:auto;transform:translateY(100%);transition:transform .3s ease;z-index:1000">
+          <div style="width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:0 auto 12px"></div>
+          <div id="places-panel-content"></div>
+        </div>
       </div>
     </div>
 
@@ -650,47 +662,160 @@ function renderDayLogistics(d) {
 // ═══════════════════════════════════════════════
 function initMap() {
   if (map) return;
-  map = L.map('map').setView([-25, 140], 4);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:'© OpenStreetMap', maxZoom:19
-  }).addTo(map);
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: -25, lng: 140 },
+    zoom: 4,
+    mapTypeId: 'roadmap',
+    styles: [
+      {elementType:'geometry',stylers:[{color:'#1a2744'}]},
+      {elementType:'labels.text.fill',stylers:[{color:'#8EA8CC'}]},
+      {elementType:'labels.text.stroke',stylers:[{color:'#0F1923'}]},
+      {featureType:'road',elementType:'geometry',stylers:[{color:'#253d5b'}]},
+      {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#1a2744'}]},
+      {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#2d5a8e'}]},
+      {featureType:'water',elementType:'geometry',stylers:[{color:'#0e1e35'}]},
+      {featureType:'poi',elementType:'geometry',stylers:[{color:'#1e3050'}]},
+      {featureType:'poi.park',elementType:'geometry',stylers:[{color:'#1a3830'}]},
+      {featureType:'transit',elementType:'geometry',stylers:[{color:'#1e3050'}]},
+    ]
+  });
   renderMapForDay(currentDayIdx);
   renderMapDayPicker();
 }
 
 function renderMapForDay(idx) {
   if (!map) return;
-  mapMarkers.forEach(m => m.remove());
+  mapMarkers.forEach(m => { if(m.setMap) m.setMap(null); else if(m.map) m.setMap(null); });
   mapMarkers = [];
+  if (window._mapPolyline) { window._mapPolyline.setMap(null); window._mapPolyline = null; }
+  if (window._mapInfoWindow) { window._mapInfoWindow.close(); }
 
   const d = TRIP.days[idx];
   const acts = d.activities.filter(a => a.lat && a.lng);
   if (!acts.length) return;
 
-  const typeColors = {food:'#F5A623',flight:'#0057A8',explore:'#3B9EF5',transport:'#8B5CF6',logistics:'#FFD700',hotel:'#EC4899'};
+  const typeColors = {food:'#F5A623',flight:'#4A90D9',explore:'#3B9EF5',transport:'#8B5CF6',logistics:'#FFD700',hotel:'#EC4899'};
+  const bounds = new google.maps.LatLngBounds();
+  const infoWindow = new google.maps.InfoWindow();
+  window._mapInfoWindow = infoWindow;
+  const pathCoords = [];
 
   acts.forEach(a => {
     const color = typeColors[a.type] || '#3B9EF5';
-    const icon = L.divIcon({
-      html:`<div style="background:${color};width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>`,
-      iconSize:[12,12], className:''
+    const pos = { lat: a.lat, lng: a.lng };
+    const marker = new google.maps.Marker({
+      position: pos,
+      map: map,
+      title: a.title,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: color,
+        fillOpacity: 1,
+        strokeColor: '#ffffff',
+        strokeWeight: 2,
+        scale: 8
+      }
     });
-    const m = L.marker([a.lat, a.lng], {icon})
-      .addTo(map)
-      .bindPopup(`<b>${a.hour}</b><br>${a.title}`);
-    mapMarkers.push(m);
+
+    marker.addListener('click', () => {
+      infoWindow.setContent(`
+        <div style="background:#1E2D40;color:#F0F4F8;padding:10px;border-radius:8px;font-family:system-ui;min-width:160px">
+          <div style="font-weight:700;font-size:.9rem">${a.hour} · ${a.title}</div>
+          <div style="font-size:.75rem;color:#7A9BB5;margin-top:4px">${a.type.toUpperCase()}</div>
+          ${a.notes ? `<div style="font-size:.75rem;margin-top:6px;border-top:1px solid rgba(255,255,255,.1);padding-top:6px">${a.notes}</div>` : ''}
+          <button onclick="searchNearby(${a.lat},${a.lng},'${a.title.replace(/'/g,"\'")}')"
+            style="margin-top:8px;background:#3B9EF5;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:.72rem;cursor:pointer;width:100%">
+            🔍 Ver en Google Maps
+          </button>
+        </div>`);
+      infoWindow.open(map, marker);
+      openPlacesPanel(a.lat, a.lng, a.title);
+    });
+
+    mapMarkers.push(marker);
+    bounds.extend(pos);
+    pathCoords.push(pos);
   });
 
-  // Fit bounds
-  const group = L.featureGroup(mapMarkers);
-  map.fitBounds(group.getBounds().pad(0.2));
+  map.fitBounds(bounds);
 
-  // Draw route line
-  const coords = acts.map(a => [a.lat, a.lng]);
-  if (coords.length > 1) {
-    const line = L.polyline(coords, {color:'rgba(59,158,245,.5)',weight:2,dashArray:'6,6'}).addTo(map);
-    mapMarkers.push(line);
+  if (pathCoords.length > 1) {
+    window._mapPolyline = new google.maps.Polyline({
+      path: pathCoords,
+      geodesic: true,
+      strokeColor: 'rgba(59,158,245,0.6)',
+      strokeOpacity: 0.7,
+      strokeWeight: 2,
+      icons: [{icon:{path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,scale:3},offset:'100%'}],
+      map: map
+    });
   }
+}
+
+function searchNearby(lat, lng, name) {
+  const url = `https://www.google.com/maps/search/${encodeURIComponent(name)}/@${lat},${lng},15z`;
+  window.open(url, '_blank');
+}
+
+function openPlacesPanel(lat, lng, name) {
+  const service = new google.maps.places.PlacesService(map);
+  const req = { location: new google.maps.LatLng(lat, lng), radius: 500, query: name };
+  service.textSearch(req, (results, status) => {
+    if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) return;
+    const place = results[0];
+    showPlacesPanel(place, service);
+  });
+}
+
+function showPlacesPanel(place, service) {
+  service.getDetails({ placeId: place.place_id, fields: ['name','rating','user_ratings_total','formatted_address','photos','reviews','opening_hours','website','url'] }, (detail, status) => {
+    if (status !== google.maps.places.PlacesServiceStatus.OK) return;
+
+    let panelHtml = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-size:1rem;font-weight:700">${detail.name}</div>
+        <button onclick="closePlacesPanel()" style="background:rgba(255,255,255,.1);border:none;color:#fff;border-radius:6px;padding:4px 8px;cursor:pointer">✕</button>
+      </div>`;
+
+    if (detail.rating) {
+      const stars = '★'.repeat(Math.round(detail.rating)) + '☆'.repeat(5-Math.round(detail.rating));
+      panelHtml += `<div style="margin-bottom:8px"><span style="color:#FFD700;font-size:.9rem">${stars}</span> <span style="color:#7A9BB5;font-size:.78rem">${detail.rating} (${detail.user_ratings_total||0} reseñas)</span></div>`;
+    }
+
+    if (detail.formatted_address) panelHtml += `<div style="font-size:.75rem;color:#7A9BB5;margin-bottom:10px">📍 ${detail.formatted_address}</div>`;
+
+    if (detail.photos?.length) {
+      panelHtml += `<div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none">`;
+      detail.photos.slice(0,5).forEach(p => {
+        const url = p.getUrl({maxWidth:200,maxHeight:150});
+        panelHtml += `<img src="${url}" style="height:90px;border-radius:8px;flex-shrink:0;object-fit:cover">`;
+      });
+      panelHtml += `</div>`;
+    }
+
+    if (detail.reviews?.length) {
+      panelHtml += `<div style="font-size:.7rem;font-weight:700;color:#7A9BB5;letter-spacing:.1em;margin-bottom:6px">RESEÑAS</div>`;
+      detail.reviews.slice(0,3).forEach(r => {
+        const s = '★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
+        panelHtml += `<div style="background:rgba(255,255,255,.04);border-radius:8px;padding:8px;margin-bottom:6px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:.75rem;font-weight:600">${r.author_name}</span>
+            <span style="color:#FFD700;font-size:.72rem">${s}</span>
+          </div>
+          <div style="font-size:.72rem;color:#7A9BB5;line-height:1.4">${r.text?.substring(0,120)}${r.text?.length>120?'...':''}</div>
+        </div>`;
+      });
+    }
+
+    if (detail.url) panelHtml += `<a href="${detail.url}" target="_blank" style="display:block;text-align:center;background:#3B9EF5;color:#fff;border-radius:8px;padding:8px;font-size:.78rem;text-decoration:none;margin-top:6px">Ver en Google Maps 🗺️</a>`;
+
+    document.getElementById('places-panel-content').innerHTML = panelHtml;
+    document.getElementById('places-panel').style.transform = 'translateY(0)';
+  });
+}
+
+function closePlacesPanel() {
+  document.getElementById('places-panel').style.transform = 'translateY(100%)';
 }
 
 function renderMapDayPicker() {
@@ -1004,7 +1129,7 @@ function switchView(view) {
   document.getElementById('view-'+view).classList.add('active');
   document.getElementById('nav-'+view).classList.add('active');
   currentView = view;
-  if (view==='map') { setTimeout(initMap,100); setTimeout(()=>map&&map.invalidateSize(),300); }
+  if (view==='map') { setTimeout(initMap,150); setTimeout(()=>{ if(map){ google.maps.event.trigger(map,'resize'); } },400); }
 }
 
 function goToDay(idx) {
@@ -1131,6 +1256,36 @@ function saveSetup() {
   closeSetup();
   alert('✅ Configuración guardada');
 }
+
+// ═══════════════════════════════════════════════
+// MAP SEARCH
+// ═══════════════════════════════════════════════
+function doMapSearch() {
+  const query = document.getElementById('map-search-input').value.trim();
+  if (!query || !map) return;
+  const service = new google.maps.places.PlacesService(map);
+  const d = TRIP.days[currentDayIdx];
+  // Center search around current day's first location
+  const firstAct = d.activities.find(a=>a.lat&&a.lng);
+  const center = firstAct ? new google.maps.LatLng(firstAct.lat, firstAct.lng) : map.getCenter();
+  service.textSearch({ query, location: center, radius: 50000 }, (results, status) => {
+    if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) return;
+    const place = results[0];
+    map.setCenter(place.geometry.location);
+    map.setZoom(15);
+    showPlacesPanel(place, service);
+    new google.maps.Marker({
+      position: place.geometry.location, map,
+      icon: { path: google.maps.SymbolPath.CIRCLE, fillColor:'#FFD700', fillOpacity:1, strokeColor:'#fff', strokeWeight:2, scale:10 }
+    });
+  });
+}
+
+// Also trigger search on Enter key
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('map-search-input');
+  if (inp) inp.addEventListener('keydown', e => { if(e.key==='Enter') doMapSearch(); });
+});
 
 // ═══════════════════════════════════════════════
 // UTILS

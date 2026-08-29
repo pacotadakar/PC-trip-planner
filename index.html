@@ -149,8 +149,8 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 .dc-m{font-size:.55rem;color:var(--soft);text-transform:uppercase;letter-spacing:.04em}
 .dc.today .dc-date{background:rgba(116,172,223,.15)}
 .dc.today .dc-d{color:var(--cel)}
-.dc-info{flex:1;min-width:0}
-.dc-city{font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dc-info{flex:1;min-width:0;overflow:hidden}
+.dc-city{font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .dc-meta{font-size:.68rem;color:var(--soft);margin-top:2px}
 .dc-icon{font-size:1.2rem;flex-shrink:0}
 .dc-pct{font-size:.7rem;color:var(--soft);flex-shrink:0;font-family:'Bebas Neue';font-size:.85rem}
@@ -203,14 +203,14 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 .act-card{
   flex:1;background:var(--navy3);border:1px solid var(--border);
   border-radius:12px;padding:10px 12px;margin-bottom:8px;cursor:pointer;
-  transition:all .18s;
+  transition:all .18s;min-width:0;overflow:hidden;
 }
 .act-card:hover{border-color:rgba(201,168,76,.22)}
 .act-card.done{background:rgba(45,198,83,.05);border-color:rgba(45,198,83,.15);opacity:.65}
 .act-top{display:flex;align-items:center;gap:8px}
 .act-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;transition:all .18s;cursor:pointer}
 .act-check.checked{background:var(--green);border-color:var(--green);color:#fff}
-.act-title{font-size:.85rem;font-weight:500;flex:1;line-height:1.3}
+.act-title{font-size:.85rem;font-weight:500;flex:1;line-height:1.3;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .act-card.done .act-title{text-decoration:line-through;color:var(--soft)}
 .act-tag{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.04em;flex-shrink:0;text-transform:uppercase}
 .tag-food{background:rgba(245,100,10,.15);color:var(--orange)}
@@ -235,6 +235,9 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 
 /* ── MAP VIEW ── */
 #view-map{padding:0}
+#view-map.active{display:flex;flex-direction:column;overflow:hidden}
+#map-container-wrap{flex:1;position:relative;overflow:hidden;min-height:0}
+#map{position:absolute;inset:0;width:100%;height:100%}
 .map-search-bar{
   position:absolute;top:10px;left:50%;transform:translateX(-50%);
   z-index:999;width:92%;max-width:380px;
@@ -253,9 +256,9 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 }
 #map{flex:1}
 .map-day-picker{
-  position:absolute;bottom:8px;left:0;right:0;
+  position:absolute;bottom:12px;left:0;right:0;
   display:flex;overflow-x:auto;gap:5px;padding:0 10px;
-  scrollbar-width:none;z-index:999;
+  scrollbar-width:none;z-index:998;pointer-events:all;
 }
 .map-day-picker::-webkit-scrollbar{display:none}
 .mdp-btn{
@@ -271,10 +274,10 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 
 /* Places panel */
 #places-panel{
-  position:absolute;bottom:60px;left:0;right:0;
+  position:absolute;bottom:0;left:0;right:0;
   background:var(--navy2);border-top:1px solid rgba(201,168,76,.15);
   border-radius:16px 16px 0 0;padding:14px;
-  max-height:52%;overflow-y:auto;
+  max-height:55%;overflow-y:auto;
   transform:translateY(100%);transition:transform .3s ease;z-index:1000;
 }
 .pp-handle{width:36px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;margin:0 auto 12px}
@@ -353,20 +356,25 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
 #sync-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ── SNAP SCROLL DAY VIEW (WC26 style) ── */
-#view-day { overflow-y: hidden; display: none; }
-#view-day.active { display: flex; flex-direction: column; }
+#view-day { overflow: hidden; display: none; }
+#view-day.active { display: flex; flex-direction: column; overflow: hidden; }
 #dv-snap-container {
   flex: 1;
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
+  min-height: 0;
 }
 .dv-snap-page {
   min-height: 100%;
+  max-width: 100vw;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
+
 
 /* ── OVERVIEW: summary card ── */
 .dc-summary {
@@ -377,6 +385,7 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 .dc-highlight {
   display: inline-block;
@@ -406,9 +415,9 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
   background: repeating-linear-gradient(-50deg,transparent 0,transparent 28px,rgba(116,172,223,.03) 28px,rgba(116,172,223,.03) 29px);
 }
 .dv-story-top { padding: 14px 14px 12px; }
-.dv-story-date-row { display:flex; align-items:baseline; gap:10px; margin-bottom:4px; }
+.dv-story-date-row { display:flex; align-items:baseline; gap:10px; margin-bottom:4px; overflow:hidden; }
 .dv-story-daynum {
-  font-family:'Bebas Neue'; font-size: 3.8rem; line-height:1;
+  font-family:'Bebas Neue'; font-size: 3.5rem; line-height:1;
   background: linear-gradient(135deg,var(--goldb),var(--gold),var(--goldd));
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
   filter: drop-shadow(0 2px 6px rgba(201,168,76,.25));
@@ -434,17 +443,19 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
   border-radius: 12px;
   padding: 11px 13px;
   display: flex; align-items: center; gap: 10px;
+  overflow: hidden; max-width: 100%;
 }
+.moment-text { font-size:.8rem;font-weight:600;color:var(--goldl);line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
 .moment-icon { font-size: 1.5rem; flex-shrink:0; }
-.moment-text { font-size: .8rem; font-weight: 600; color: var(--goldl); line-height:1.35; }
+
 .moment-sub { font-size: .68rem; color: var(--soft); margin-top:2px; }
 
 /* ── PLACE PHOTO CHIP ── */
-.place-photo-strip { display:flex; gap:7px; overflow-x:auto; padding:0 14px 10px; scrollbar-width:none; }
+.place-photo-strip { display:flex; gap:7px; overflow-x:auto; overflow-y:hidden; padding:6px 0 8px; scrollbar-width:none; max-width:100%; }
 .place-photo-strip::-webkit-scrollbar { display:none; }
-.place-photo-item { flex-shrink:0; position:relative; cursor:pointer; border-radius:10px; overflow:hidden; }
-.place-photo-img { width:110px; height:80px; object-fit:cover; display:block; }
-.place-photo-name { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,.7)); color:#fff; font-size:.62rem; font-weight:600; padding:4px 6px 5px; line-height:1.2; }
+.place-photo-item { flex-shrink:0; position:relative; cursor:pointer; border-radius:9px; overflow:hidden; width:100px; height:72px; }
+.place-photo-img { width:100%; height:100%; object-fit:cover; display:block; }
+.place-photo-name { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,.75)); color:#fff; font-size:.58rem; font-weight:600; padding:3px 5px 4px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
 /* ── MAP: full route line style ── */
 .map-legend { position:absolute; top:52px; right:10px; z-index:999; background:rgba(8,16,30,.88); backdrop-filter:blur(8px); border:1px solid var(--border); border-radius:10px; padding:8px 11px; }
@@ -594,24 +605,31 @@ html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--text);f
     </div>
 
     <!-- MAP -->
-    <div id="view-map" class="view" style="position:relative">
-      <div class="map-search-bar">
-        <input class="map-search-input" id="map-search" type="text" placeholder="🔍 Buscar lugar..." onkeydown="if(event.key==='Enter')doSearch()">
-        <button class="map-search-btn" onclick="doSearch()">→</button>
-      </div>
-      <div id="map"></div>
-      <div class="map-day-picker" id="map-day-picker"></div>
-      <div class="map-legend">
-        <div class="ml-row"><div class="ml-dot" style="background:#74ACDF"></div>Explorar</div>
-        <div class="ml-row"><div class="ml-dot" style="background:#F5A623"></div>Comida</div>
-        <div class="ml-row"><div class="ml-dot" style="background:#4A90D9"></div>Vuelo</div>
-        <div class="ml-row"><div class="ml-dot" style="background:#8B5CF6"></div>Transporte</div>
-        <div class="ml-row"><div class="ml-dot" style="background:#2DC653"></div>✓ Hecho</div>
-      </div>
-      <div id="places-panel">
-        <button class="pp-close" onclick="closePP()">✕</button>
-        <div class="pp-handle"></div>
-        <div id="pp-content"></div>
+    <div id="view-map" class="view">
+      <div id="map-container-wrap">
+        <!-- Search bar -->
+        <div class="map-search-bar">
+          <input class="map-search-input" id="map-search" type="text" placeholder="🔍 Buscar lugar..." onkeydown="if(event.key==='Enter')doSearch()">
+          <button class="map-search-btn" onclick="doSearch()">→</button>
+        </div>
+        <!-- Map -->
+        <div id="map"></div>
+        <!-- Legend -->
+        <div class="map-legend">
+          <div class="ml-row"><div class="ml-dot" style="background:#74ACDF"></div>Explorar</div>
+          <div class="ml-row"><div class="ml-dot" style="background:#F5A623"></div>Comida</div>
+          <div class="ml-row"><div class="ml-dot" style="background:#4A90D9"></div>Vuelo</div>
+          <div class="ml-row"><div class="ml-dot" style="background:#8B5CF6"></div>Transporte</div>
+          <div class="ml-row"><div class="ml-dot" style="background:#2DC653"></div>✓ Hecho</div>
+        </div>
+        <!-- Day picker -->
+        <div class="map-day-picker" id="map-day-picker"></div>
+        <!-- Places panel -->
+        <div id="places-panel">
+          <button class="pp-close" onclick="closePP()">✕</button>
+          <div class="pp-handle"></div>
+          <div id="pp-content"></div>
+        </div>
       </div>
     </div>
 
@@ -1039,7 +1057,8 @@ function openPlaceFromAct(lat, lng, name) {
 // ═══════════════════════════════════════════════════════
 function initMap() {
   if (gmap) { setTimeout(()=>google.maps.event.trigger(gmap,'resize'),200); return; }
-  gmap = new google.maps.Map(document.getElementById('map'), {
+  const mapEl = document.getElementById('map');
+  gmap = new google.maps.Map(mapEl, {
     center:{lat:-28,lng:143},zoom:4,
     mapTypeId:'roadmap',
     gestureHandling:'greedy',
@@ -1481,7 +1500,10 @@ function switchView(view) {
   document.getElementById('bn-'+view).classList.add('active');
   curView=view;
   if (view==='day' && !_dayRendered) { _dayRendered=true; renderDayView(); }
-  if (view==='map') setTimeout(()=>{initMap();setTimeout(()=>google.maps.event.trigger(gmap,'resize'),300);},100);
+  if (view==='map') setTimeout(()=>{
+    initMap();
+    setTimeout(()=>{if(gmap){google.maps.event.trigger(gmap,'resize');}},400);
+  },150);
 }
 
 function jumpDay(idx) {

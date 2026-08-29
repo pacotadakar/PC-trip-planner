@@ -4,7 +4,10 @@
     "title": "Australia & Nueva Zelanda 2027",
     "startDate": "2027-01-09",
     "endDate": "2027-02-05",
-    "travelers": ["Pato", "Agus & Pedro"],
+    "travelers": [
+      "Pato",
+      "Agus & Pedro"
+    ],
     "currency": "USD",
     "coverEmoji": "🦘"
   },
@@ -32,9 +35,46 @@
       "country": "Argentina",
       "type": "flight",
       "activities": [
-        { "id": "a1", "hour": "21:00", "title": "Ida a Ezeiza", "type": "transport", "done": false, "notes": "", "lat": -34.8222, "lng": -58.5358 },
-        { "id": "a2", "hour": "23:00", "title": "Check in aeropuerto", "type": "logistics", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a3", "hour": "02:00", "title": "Vuelo MU746 EZE → AKL", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a1",
+          "hour": "21:00",
+          "title": "Ida a Ezeiza",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": -34.8222,
+          "lng": -58.5358
+        },
+        {
+          "id": "a2",
+          "hour": "23:00",
+          "title": "Check in aeropuerto",
+          "type": "logistics",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a3",
+          "hour": "02:00",
+          "title": "Vuelo MU746 EZE → AKL",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "hour": "09:00",
+          "type": "food",
+          "title": "test",
+          "notes": "",
+          "lat": null,
+          "lng": null,
+          "id": "a1787961836348",
+          "done": false
+        }
       ]
     },
     {
@@ -44,10 +84,46 @@
       "country": "Nueva Zelanda",
       "type": "flight",
       "activities": [
-        { "id": "a4", "hour": "08:40", "title": "Llegan Auckland", "type": "flight", "done": false, "notes": "", "lat": -36.8509, "lng": 174.7645 },
-        { "id": "a5", "hour": "10:00", "title": "Ida al Hotel", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a6", "hour": "11:00", "title": "Auckland - Explorar ciudad", "type": "explore", "done": false, "notes": "", "lat": -36.8509, "lng": 174.7645 },
-        { "id": "a7", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a4",
+          "hour": "08:40",
+          "title": "Llegan Auckland",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": -36.8509,
+          "lng": 174.7645
+        },
+        {
+          "id": "a5",
+          "hour": "10:00",
+          "title": "Ida al Hotel",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a6",
+          "hour": "11:00",
+          "title": "Auckland - Explorar ciudad",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -36.8509,
+          "lng": 174.7645
+        },
+        {
+          "id": "a7",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
@@ -57,13 +133,76 @@
       "country": "Nueva Zelanda",
       "type": "travel",
       "activities": [
-        { "id": "a8", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a9", "hour": "11:00", "title": "Ida al aeropuerto", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a10", "hour": "12:00", "title": "Vuelo AKL → CHC", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a11", "hour": "13:00", "title": "Alquiler Auto - GORDA LECHONA", "type": "logistics", "done": false, "notes": "", "lat": -43.4899, "lng": 172.5379 },
-        { "id": "a12", "hour": "15:00", "title": "Ida a Tekapo", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a13", "hour": "17:00", "title": "Lake Tekapo", "type": "explore", "done": false, "notes": "", "lat": -44.0059, "lng": 170.4785 },
-        { "id": "a14", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a8",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a9",
+          "hour": "11:00",
+          "title": "Ida al aeropuerto",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a10",
+          "hour": "12:00",
+          "title": "Vuelo AKL → CHC",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a11",
+          "hour": "13:00",
+          "title": "Alquiler Auto - GORDA LECHONA",
+          "type": "logistics",
+          "done": false,
+          "notes": "",
+          "lat": -43.4899,
+          "lng": 172.5379
+        },
+        {
+          "id": "a12",
+          "hour": "15:00",
+          "title": "Ida a Tekapo",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a13",
+          "hour": "17:00",
+          "title": "Lake Tekapo",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -44.0059,
+          "lng": 170.4785
+        },
+        {
+          "id": "a14",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
@@ -73,9 +212,36 @@
       "country": "Nueva Zelanda",
       "type": "explore",
       "activities": [
-        { "id": "a15", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a16", "hour": "10:00", "title": "Queenstown - Explorar", "type": "explore", "done": false, "notes": "", "lat": -45.0312, "lng": 168.6626 },
-        { "id": "a17", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a15",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a16",
+          "hour": "10:00",
+          "title": "Queenstown - Explorar",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -45.0312,
+          "lng": 168.6626
+        },
+        {
+          "id": "a17",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
@@ -85,9 +251,36 @@
       "country": "Nueva Zelanda",
       "type": "explore",
       "activities": [
-        { "id": "a18", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a19", "hour": "10:00", "title": "Queenstown", "type": "explore", "done": false, "notes": "", "lat": -45.0312, "lng": 168.6626 },
-        { "id": "a20", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a18",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a19",
+          "hour": "10:00",
+          "title": "Queenstown",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -45.0312,
+          "lng": 168.6626
+        },
+        {
+          "id": "a20",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
@@ -97,9 +290,36 @@
       "country": "Nueva Zelanda",
       "type": "explore",
       "activities": [
-        { "id": "a21", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a22", "hour": "10:00", "title": "Queenstown", "type": "explore", "done": false, "notes": "", "lat": -45.0312, "lng": 168.6626 },
-        { "id": "a23", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a21",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a22",
+          "hour": "10:00",
+          "title": "Queenstown",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -45.0312,
+          "lng": 168.6626
+        },
+        {
+          "id": "a23",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
@@ -109,175 +329,835 @@
       "country": "Nueva Zelanda → Australia",
       "type": "flight",
       "activities": [
-        { "id": "a24", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a25", "hour": "11:00", "title": "Ida al Aeropuerto", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a26", "hour": "12:00", "title": "Vuelo QTW → SYD", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "a27", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "a24",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a25",
+          "hour": "11:00",
+          "title": "Ida al Aeropuerto",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a26",
+          "hour": "12:00",
+          "title": "Vuelo QTW → SYD",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "a27",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-16", "dayNum": 8, "city": "Sydney", "country": "Australia", "type": "explore",
+      "date": "2027-01-16",
+      "dayNum": 8,
+      "city": "Sydney",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b1", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b2", "hour": "10:00", "title": "Sydney - Explorar", "type": "explore", "done": false, "notes": "", "lat": -33.8688, "lng": 151.2093 },
-        { "id": "b3", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b1",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b2",
+          "hour": "10:00",
+          "title": "Sydney - Explorar",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -33.8688,
+          "lng": 151.2093
+        },
+        {
+          "id": "b3",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-17", "dayNum": 9, "city": "Sydney", "country": "Australia", "type": "explore",
+      "date": "2027-01-17",
+      "dayNum": 9,
+      "city": "Sydney",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b4", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b5", "hour": "10:00", "title": "Sydney", "type": "explore", "done": false, "notes": "", "lat": -33.8688, "lng": 151.2093 },
-        { "id": "b6", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b4",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b5",
+          "hour": "10:00",
+          "title": "Sydney",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -33.8688,
+          "lng": 151.2093
+        },
+        {
+          "id": "b6",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-18", "dayNum": 10, "city": "Sydney → Jervis Bay", "country": "Australia", "type": "travel",
+      "date": "2027-01-18",
+      "dayNum": 10,
+      "city": "Sydney → Jervis Bay",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b7", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b8", "hour": "10:00", "title": "Road Trip → Jervis Bay", "type": "transport", "done": false, "notes": "", "lat": -35.1333, "lng": 150.7333 },
-        { "id": "b9", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b7",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b8",
+          "hour": "10:00",
+          "title": "Road Trip → Jervis Bay",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": -35.1333,
+          "lng": 150.7333
+        },
+        {
+          "id": "b9",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-19", "dayNum": 11, "city": "Road Trip", "country": "Australia", "type": "travel",
+      "date": "2027-01-19",
+      "dayNum": 11,
+      "city": "Road Trip",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b10", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b11", "hour": "10:00", "title": "Road Trip", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b12", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b10",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b11",
+          "hour": "10:00",
+          "title": "Road Trip",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b12",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-20", "dayNum": 12, "city": "Road Trip", "country": "Australia", "type": "travel",
+      "date": "2027-01-20",
+      "dayNum": 12,
+      "city": "Road Trip",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b13", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b14", "hour": "10:00", "title": "Road Trip", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b15", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b13",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b14",
+          "hour": "10:00",
+          "title": "Road Trip",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b15",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-21", "dayNum": 13, "city": "Road Trip", "country": "Australia", "type": "travel",
+      "date": "2027-01-21",
+      "dayNum": 13,
+      "city": "Road Trip",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b16", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b17", "hour": "10:00", "title": "Road Trip", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b18", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b16",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b17",
+          "hour": "10:00",
+          "title": "Road Trip",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b18",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-22", "dayNum": 14, "city": "Road Trip", "country": "Australia", "type": "travel",
+      "date": "2027-01-22",
+      "dayNum": 14,
+      "city": "Road Trip",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b19", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b20", "hour": "12:00", "title": "KUKA Gorda - Almuerzo especial", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b21", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b19",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b20",
+          "hour": "12:00",
+          "title": "KUKA Gorda - Almuerzo especial",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b21",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-23", "dayNum": 15, "city": "Road Trip → Melbourne", "country": "Australia", "type": "travel",
+      "date": "2027-01-23",
+      "dayNum": 15,
+      "city": "Road Trip → Melbourne",
+      "country": "Australia",
+      "type": "travel",
       "activities": [
-        { "id": "b22", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b23", "hour": "10:00", "title": "Road Trip → Melbourne", "type": "transport", "done": false, "notes": "", "lat": -37.8136, "lng": 144.9631 },
-        { "id": "b24", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b22",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b23",
+          "hour": "10:00",
+          "title": "Road Trip → Melbourne",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": -37.8136,
+          "lng": 144.9631
+        },
+        {
+          "id": "b24",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-24", "dayNum": 16, "city": "Melbourne", "country": "Australia", "type": "explore",
+      "date": "2027-01-24",
+      "dayNum": 16,
+      "city": "Melbourne",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b25", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b26", "hour": "10:00", "title": "Melbourne - Explorar", "type": "explore", "done": false, "notes": "", "lat": -37.8136, "lng": 144.9631 },
-        { "id": "b27", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b25",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b26",
+          "hour": "10:00",
+          "title": "Melbourne - Explorar",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -37.8136,
+          "lng": 144.9631
+        },
+        {
+          "id": "b27",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-25", "dayNum": 17, "city": "Melbourne → Perth", "country": "Australia", "type": "flight",
+      "date": "2027-01-25",
+      "dayNum": 17,
+      "city": "Melbourne → Perth",
+      "country": "Australia",
+      "type": "flight",
       "activities": [
-        { "id": "b28", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b29", "hour": "12:00", "title": "Vuelo MEL → PER", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b30", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b28",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b29",
+          "hour": "12:00",
+          "title": "Vuelo MEL → PER",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b30",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-26", "dayNum": 18, "city": "Perth", "country": "Australia", "type": "explore",
+      "date": "2027-01-26",
+      "dayNum": 18,
+      "city": "Perth",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b31", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b32", "hour": "10:00", "title": "Perth - Explorar", "type": "explore", "done": false, "notes": "", "lat": -31.9505, "lng": 115.8605 },
-        { "id": "b33", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b31",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b32",
+          "hour": "10:00",
+          "title": "Perth - Explorar",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -31.9505,
+          "lng": 115.8605
+        },
+        {
+          "id": "b33",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-27", "dayNum": 19, "city": "Perth", "country": "Australia", "type": "explore",
+      "date": "2027-01-27",
+      "dayNum": 19,
+      "city": "Perth",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b34", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b35", "hour": "10:00", "title": "Perth", "type": "explore", "done": false, "notes": "", "lat": -31.9505, "lng": 115.8605 },
-        { "id": "b36", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b34",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b35",
+          "hour": "10:00",
+          "title": "Perth",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -31.9505,
+          "lng": 115.8605
+        },
+        {
+          "id": "b36",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-28", "dayNum": 20, "city": "Perth", "country": "Australia", "type": "explore",
+      "date": "2027-01-28",
+      "dayNum": 20,
+      "city": "Perth",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b37", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b38", "hour": "10:00", "title": "Perth", "type": "explore", "done": false, "notes": "", "lat": -31.9505, "lng": 115.8605 },
-        { "id": "b39", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b37",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b38",
+          "hour": "10:00",
+          "title": "Perth",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -31.9505,
+          "lng": 115.8605
+        },
+        {
+          "id": "b39",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-29", "dayNum": 21, "city": "Perth", "country": "Australia", "type": "explore",
+      "date": "2027-01-29",
+      "dayNum": 21,
+      "city": "Perth",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b40", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b41", "hour": "10:00", "title": "Perth", "type": "explore", "done": false, "notes": "", "lat": -31.9505, "lng": 115.8605 },
-        { "id": "b42", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b40",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b41",
+          "hour": "10:00",
+          "title": "Perth",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -31.9505,
+          "lng": 115.8605
+        },
+        {
+          "id": "b42",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-30", "dayNum": 22, "city": "Perth → Melbourne", "country": "Australia", "type": "flight",
+      "date": "2027-01-30",
+      "dayNum": 22,
+      "city": "Perth → Melbourne",
+      "country": "Australia",
+      "type": "flight",
       "activities": [
-        { "id": "b43", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b44", "hour": "12:00", "title": "Vuelo PER → MEL", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b45", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b43",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b44",
+          "hour": "12:00",
+          "title": "Vuelo PER → MEL",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b45",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-01-31", "dayNum": 23, "city": "Melbourne", "country": "Australia", "type": "explore",
+      "date": "2027-01-31",
+      "dayNum": 23,
+      "city": "Melbourne",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b46", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b47", "hour": "10:00", "title": "Melbourne", "type": "explore", "done": false, "notes": "", "lat": -37.8136, "lng": 144.9631 },
-        { "id": "b48", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b46",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b47",
+          "hour": "10:00",
+          "title": "Melbourne",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -37.8136,
+          "lng": 144.9631
+        },
+        {
+          "id": "b48",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-02-01", "dayNum": 24, "city": "Melbourne", "country": "Australia", "type": "explore",
+      "date": "2027-02-01",
+      "dayNum": 24,
+      "city": "Melbourne",
+      "country": "Australia",
+      "type": "explore",
       "activities": [
-        { "id": "b49", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b50", "hour": "10:00", "title": "Melbourne", "type": "explore", "done": false, "notes": "", "lat": -37.8136, "lng": 144.9631 },
-        { "id": "b51", "hour": "21:00", "title": "Dinner", "type": "food", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b49",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b50",
+          "hour": "10:00",
+          "title": "Melbourne",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -37.8136,
+          "lng": 144.9631
+        },
+        {
+          "id": "b51",
+          "hour": "21:00",
+          "title": "Dinner",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-02-02", "dayNum": 25, "city": "Melbourne → Auckland", "country": "Australia → NZ", "type": "flight",
+      "date": "2027-02-02",
+      "dayNum": 25,
+      "city": "Melbourne → Auckland",
+      "country": "Australia → NZ",
+      "type": "flight",
       "activities": [
-        { "id": "b52", "hour": "09:00", "title": "Breakfast", "type": "food", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b53", "hour": "14:00", "title": "Ida a Matata / Hobbiton", "type": "explore", "done": false, "notes": "", "lat": -37.8724, "lng": 176.3486 },
-        { "id": "b54", "hour": "17:00", "title": "Hobbiton Movie Set Tour", "type": "explore", "done": false, "notes": "", "lat": -37.8724, "lng": 175.6820 },
-        { "id": "b55", "hour": "21:00", "title": "Regreso al hotel", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b52",
+          "hour": "09:00",
+          "title": "Breakfast",
+          "type": "food",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b53",
+          "hour": "14:00",
+          "title": "Ida a Matata / Hobbiton",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -37.8724,
+          "lng": 176.3486
+        },
+        {
+          "id": "b54",
+          "hour": "17:00",
+          "title": "Hobbiton Movie Set Tour",
+          "type": "explore",
+          "done": false,
+          "notes": "",
+          "lat": -37.8724,
+          "lng": 175.682
+        },
+        {
+          "id": "b55",
+          "hour": "21:00",
+          "title": "Regreso al hotel",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-02-03", "dayNum": 26, "city": "Auckland → Vuelo", "country": "Nueva Zelanda", "type": "flight",
+      "date": "2027-02-03",
+      "dayNum": 26,
+      "city": "Auckland → Vuelo",
+      "country": "Nueva Zelanda",
+      "type": "flight",
       "activities": [
-        { "id": "b56", "hour": "05:00", "title": "Ida al Aeropuerto", "type": "transport", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b57", "hour": "07:00", "title": "Vuelo AKL → EZE", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null },
-        { "id": "b58", "hour": "21:00", "title": "Vuelo a EZE-AKL", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b56",
+          "hour": "05:00",
+          "title": "Ida al Aeropuerto",
+          "type": "transport",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b57",
+          "hour": "07:00",
+          "title": "Vuelo AKL → EZE",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "b58",
+          "hour": "21:00",
+          "title": "Vuelo a EZE-AKL",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-02-04", "dayNum": 27, "city": "En vuelo", "country": "", "type": "flight",
+      "date": "2027-02-04",
+      "dayNum": 27,
+      "city": "En vuelo",
+      "country": "",
+      "type": "flight",
       "activities": [
-        { "id": "b59", "hour": "06:00", "title": "Vuelo en curso", "type": "flight", "done": false, "notes": "", "lat": null, "lng": null }
+        {
+          "id": "b59",
+          "hour": "06:00",
+          "title": "Vuelo en curso",
+          "type": "flight",
+          "done": false,
+          "notes": "",
+          "lat": null,
+          "lng": null
+        }
       ]
     },
     {
-      "date": "2027-02-05", "dayNum": 28, "city": "Buenos Aires", "country": "Argentina", "type": "home",
+      "date": "2027-02-05",
+      "dayNum": 28,
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "type": "home",
       "activities": [
-        { "id": "b60", "hour": "08:00", "title": "Llegan EZE - Bienvenidos a casa 🏠", "type": "logistics", "done": false, "notes": "", "lat": -34.8222, "lng": -58.5358 }
+        {
+          "id": "b60",
+          "hour": "08:00",
+          "title": "Llegan EZE - Bienvenidos a casa 🏠",
+          "type": "logistics",
+          "done": false,
+          "notes": "",
+          "lat": -34.8222,
+          "lng": -58.5358
+        }
       ]
     }
   ]

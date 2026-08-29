@@ -64,16 +64,6 @@
           "notes": "",
           "lat": null,
           "lng": null
-        },
-        {
-          "hour": "09:00",
-          "type": "food",
-          "title": "test",
-          "notes": "",
-          "lat": null,
-          "lng": null,
-          "id": "a1787961836348",
-          "done": false
         }
       ]
     },
